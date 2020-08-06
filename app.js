@@ -15,5 +15,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.use('/medias', indexRouter);
+app.use((err, req, res, next) => res.status(err.statusCode || 500).json(err));
 
 module.exports = app;
